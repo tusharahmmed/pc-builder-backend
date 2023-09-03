@@ -43,11 +43,8 @@ const getSingleProduct = catchAsync(async (req, res) => {
 });
 // get products by category
 const getRelatedProducts = catchAsync(async (req, res) => {
-  const {id, category}: any = req.query;
-  const result = await ProductService.getRelatedProducts(
-    id as string,
-    category as string
-  );
+  const {id}: any = req.params;
+  const result = await ProductService.getRelatedProducts(id as string);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,

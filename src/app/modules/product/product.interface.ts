@@ -14,4 +14,6 @@ export type IProduct = {
   reviews: {message: string; user: string}[];
 };
 
-export type ProductModel = Model<IProduct, {}>;
+export interface ProductModel extends Model<IProduct> {
+  getCategory(id: string): string;
+}

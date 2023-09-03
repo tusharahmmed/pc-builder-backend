@@ -54,4 +54,12 @@ const productSchama = new Schema<IProduct, ProductModel>(
   }
 );
 
+productSchama.statics.getCategory = async function (id) {
+  const product = await Product.findById(id).lean();
+
+  if (product) {
+    return product.category;
+  }
+};
+
 export const Product = model<IProduct, ProductModel>("Product", productSchama);

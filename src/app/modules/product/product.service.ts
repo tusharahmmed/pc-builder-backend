@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import {Types} from "mongoose";
 import {Product} from "./product.model";
 
 // get all books
@@ -17,8 +16,9 @@ const getSingleProduct = async (id: string) => {
   const result = await Product.findById(id);
   return result;
 };
-const getRelatedProducts = async (id: string, category: string) => {
-  console.log(id, category);
+const getRelatedProducts = async (id: string) => {
+  const category = await Product.getCategory(id);
+
   const result = await Product.find({
     $and: [{category: {$in: category}}, {_id: {$ne: id}}],
   });
