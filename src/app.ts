@@ -15,7 +15,7 @@ app.use(express.urlencoded({extended: true}));
 
 // root route
 app.get("/", (req: Request, res: Response) => {
-  res.send("Digital Book store...");
+  res.send("Pc Builder app...");
 });
 
 // application routes
